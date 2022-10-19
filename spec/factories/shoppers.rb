@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :shopper do
-    name { "MyString" }
-    email { "MyString" }
-    nif { "MyString" }
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
+    nif { Faker::IDNumber.spanish_citizen_number }
   end
 end

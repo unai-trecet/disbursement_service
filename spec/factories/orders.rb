@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :order do
-    merchant { nil }
-    shopper { nil }
-    amount { "" }
-    completed_at { "2022-10-19 10:43:25" }
+    merchant
+    shopper
+    amount { Faker::Number.number(digits: 4) }
+    completed_at { nil }
   end
 end
