@@ -6,10 +6,10 @@ RSpec.describe CreateWeeklyDisbursementsJob, type: :job do
   let(:merchant2) { create(:merchant) }
 
   let!(:on_week_orders1) { create(:order, merchant: merchant1, completed_at: selected_datetime - 1.day) }
-  let!(:on_week_orders2) { create(:order, merchant: merchant1, completed_at: selected_datetime - 7.day) }
-  let!(:on_week_orders3) { create(:order, merchant: merchant2, completed_at: selected_datetime - 2.day) }
+  let!(:on_week_orders2) { create(:order, merchant: merchant1, completed_at: selected_datetime - 7.days) }
+  let!(:on_week_orders3) { create(:order, merchant: merchant2, completed_at: selected_datetime - 2.days) }
 
-  let!(:not_on_week_order1) { create(:order, merchant: merchant1, completed_at: selected_datetime - 8.day) }
+  let!(:not_on_week_order1) { create(:order, merchant: merchant1, completed_at: selected_datetime - 8.days) }
   let!(:not_on_week_order2) { create(:order, merchant: merchant2, completed_at: selected_datetime + 1.day) }
 
   let!(:on_week_orders_not_completed) { create(:order, merchant: merchant1, completed_at: nil) }

@@ -1,5 +1,4 @@
-class DisbursementCreator 
-
+class DisbursementCreator
   def initialize(order)
     log_error('No order was provided creating Disbursement') && return unless order.is_a?(Order)
 
@@ -24,6 +23,4 @@ class DisbursementCreator
   def log_error(message)
     Logger.new($stderr).error(message)
   end
-
 end
-

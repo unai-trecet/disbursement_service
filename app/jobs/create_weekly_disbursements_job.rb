@@ -15,5 +15,4 @@ class CreateWeeklyDisbursementsJob < ApplicationJob
   def log_error(message)
     Logger.new($stderr).error(message)
   end
-
 end

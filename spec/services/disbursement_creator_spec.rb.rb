@@ -24,7 +24,7 @@ RSpec.describe DisbursementCreator, type: :service do
     end
   end
 
-  describe "order has not enough data" do
+  describe 'order has not enough data' do
     it 'does not create Disbursement when the amount cannot be set' do
       order = create(:order, define_params(completed_at: nil))
       expect_any_instance_of(Logger).to receive(:error)

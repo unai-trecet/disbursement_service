@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Disbursements", type: :request do
+RSpec.describe 'Disbursements', type: :request do
   let(:selected_datetime) { Time.parse('17/10/2022') }
   let(:merchant1) { create(:merchant, name: 'Alpaca S.A.') }
   let(:merchant2) { create(:merchant) }
@@ -12,19 +12,25 @@ RSpec.describe "Disbursements", type: :request do
   let!(:order4) { create(:order, merchant: merchant2) }
   let!(:order5) { create(:order, merchant: merchant2) }
 
-
-  let!(:disbursement1) { create(:disbursement, merchant: merchant1, order: order1, created_at: selected_datetime - 1.day) }
-  let!(:disbursement2) { create(:disbursement, merchant: merchant1, order: order2, created_at: selected_datetime - 2.day) }
-  let!(:disbursement3) { create(:disbursement, merchant: merchant1, order: order3, created_at: selected_datetime - 8.day) }
+  let!(:disbursement1) do
+    create(:disbursement, merchant: merchant1, order: order1, created_at: selected_datetime - 1.day)
+  end
+  let!(:disbursement2) do
+    create(:disbursement, merchant: merchant1, order: order2, created_at: selected_datetime - 2.days)
+  end
+  let!(:disbursement3) do
+    create(:disbursement, merchant: merchant1, order: order3, created_at: selected_datetime - 8.days)
+  end
 
   let!(:disbursement4) { create(:disbursement, merchant: merchant2, order: order4, created_at: selected_datetime) }
-  let!(:disbursement5) { create(:disbursement, merchant: merchant2, order: order5, created_at: selected_datetime + 1.day) }
+  let!(:disbursement5) do
+    create(:disbursement, merchant: merchant2, order: order5, created_at: selected_datetime + 1.day)
+  end
 
-
-  describe "GET /index" do
+  describe 'GET /index' do
     context 'only date provided' do
-      it "returns http success with the expected data" do
-        get "/disbursements/index", params: { date: selected_datetime }
+      it 'returns http success with the expected data' do
+        get '/disbursements/index', params: { date: selected_datetime }
 
         expect(response).to have_http_status(:success)
 
@@ -40,8 +46,8 @@ RSpec.describe "Disbursements", type: :request do
     end
 
     context 'date and merchant name is provided' do
-      it "returns http success with the expected data" do
-        get "/disbursements/index", params: { date: selected_datetime, merchant_name: 'Alpaca S.A.' }
+      it 'returns http success with the expected data' do
+        get '/disbursements/index', params: { date: selected_datetime, merchant_name: 'Alpaca S.A.' }
 
         expect(response).to have_http_status(:success)
 
@@ -58,8 +64,8 @@ RSpec.describe "Disbursements", type: :request do
     end
 
     context 'no date is provided' do
-      it "returns http failure" do
-        get "/disbursements/index"
+      it 'returns http failure' do
+        get '/disbursements/index'
         expect(response).to have_http_status(:bad_request)
       end
     end

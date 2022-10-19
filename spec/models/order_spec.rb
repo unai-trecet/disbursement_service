@@ -10,6 +10,6 @@ RSpec.describe Order, type: :model do
   it { should validate_presence_of(:shopper_id) }
 
   it { should monetize(:amount) }
-  
+
   it { should validate_numericality_of(:amount_cents).is_greater_than(0) }
 end
