@@ -38,12 +38,7 @@ These are the improvements I´d like to tackle with more time:
 - Move the filtering logic of *disbursements_controller* into a specific service that handles all of it leaving the controller to handle only params and responses.
 - Better documentation where is needed.
 
-
-
-
-
-
-Things you may want to cover:
+I hope you find it good enough :)
 
 * Ruby version: *3.1.2*
 
