@@ -9,4 +9,6 @@ RSpec.describe Disbursement, type: :model do
   it { should belong_to(:order) }
 
   it { should monetize(:amount) }
+
+  it { should validate_numericality_of(:amount_cents).is_greater_than(0) }
 end
